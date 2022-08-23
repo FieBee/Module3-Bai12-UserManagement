@@ -5,15 +5,55 @@
 <head>
     <title>User Management Application</title>
 </head>
+<style>
+
+    table,tr,td {
+        padding: 10px;
+        border: 2px solid gray;
+        border-collapse:collapse
+    }
+    .csw-btn-button {
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px 35px;
+        color: #ffffff !important;
+        border-radius: 5px;
+        background: #9B6A1D;
+        border: 1px solid #9B6A1D;
+        transition: 0.4s;
+    }
+    .csw-btn-button:hover {
+        background: #292929;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+    }
+</style>
 <body>
 <center>
     <h1>User Management</h1>
+    <h2><a href="/users?action=create" class="csw-btn-button" rel="nofollow">Creat New User</a></h2>
+
+    <br>
     <h2>
-        <a href="/users?action=create">Add New User</a>
+        <a href="/users?action=find" class="csw-btn-button" rel="nofollow" >Find User</a>
     </h2>
+    <br>
+    <h2>
+       <a href="/users?action=sort" class="csw-btn-button" rel="nofollow" >Display User List By Name</a>
+    </h2>
+    <br>
+    <h2>
+         <a href="/users" class="csw-btn-button" rel="nofollow" >Display User List</a>
+    </h2>
+
+
+
 </center>
 <div align="center">
-    <table border="1" cellpadding="5">
+
+    <table >
         <caption><h2>List of Users</h2></caption>
         <tr>
             <th>ID</th>
@@ -24,17 +64,20 @@
         </tr>
         <c:forEach var="user" items="${listUser}">
             <tr>
-                <td><c:out value="${user.id}"/></td>
+                <td>
+                    <c:out value="${user.id}"/>
+                </td>
                 <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.email}"/></td>
                 <td><c:out value="${user.country}"/></td>
                 <td>
-                    <a href="/users?action=edit&id=${user.id}">Edit</a>
+                    <a  href="/users?action=edit&id=${user.id}">Edit</a>
                     <a href="/users?action=delete&id=${user.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
+
 </div>
 </body>
 </html>
