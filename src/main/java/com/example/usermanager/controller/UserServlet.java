@@ -88,14 +88,16 @@ public class UserServlet extends HttpServlet {
 
     private void  findByCountry(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String country = request.getParameter("country");
-        List<User> userList = this.userDAO.selectAllUsers();
+        User user = this.userDAO.selectCountry(country);
+        request.setAttribute("user",user);
+        request.setAttribute("message","User information");
 
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getCountry().equals(country)){
-                request.setAttribute("user",userList.get(i));
-                request.setAttribute("message","User information");
-            }
-        }
+//        for (int i = 0; i < userList.size(); i++) {
+//            if (userList.get(i).getCountry().equals(country)){
+//                request.setAttribute("user",userList.get(i));
+//                request.setAttribute("message","User information");
+//            }
+//        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/find.jsp");
         dispatcher.forward(request,response);
     }
