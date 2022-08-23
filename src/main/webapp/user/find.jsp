@@ -11,8 +11,13 @@
     <title>Search User By Country</title>
 </head>
 <body>
+<h1>Search User By Country</h1>
+<br>
+<h3>
+    <a href="/users"><button>Back To User List </button></a>
+</h3>
 <form action="" method="post">
-    <h1>Search User By Country</h1>
+
     <br>
     <input type="text" name="country" id="name" placeholder="country">
     <input type="submit" value="Search">
