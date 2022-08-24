@@ -18,8 +18,8 @@
         padding: 10px 35px;
         color: #ffffff !important;
         border-radius: 5px;
-        background: #9B6A1D;
-        border: 1px solid #9B6A1D;
+        background: #e79a20;
+        border: 1px solid #c98925;
         transition: 0.4s;
     }
     .csw-btn-button:hover {
@@ -42,9 +42,6 @@
     <br>
     <h2>
        <a href="/users?action=sort" class="csw-btn-button" rel="nofollow" >Display User List By Name</a>
-    </h2>
-    <br>
-    <h2>
          <a href="/users" class="csw-btn-button" rel="nofollow" >Display User List</a>
     </h2>
 

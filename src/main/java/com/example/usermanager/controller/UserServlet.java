@@ -1,5 +1,6 @@
 package com.example.usermanager.controller;
 
+import com.example.usermanager.dao.IUserDAO;
 import com.example.usermanager.dao.UserDAO;
 import com.example.usermanager.model.User;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -88,16 +90,10 @@ public class UserServlet extends HttpServlet {
 
     private void  findByCountry(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String country = request.getParameter("country");
-        User user = this.userDAO.selectCountry(country);
+        List<User> user = this.userDAO.selectCountry(country);
         request.setAttribute("user",user);
         request.setAttribute("message","User information");
 
-//        for (int i = 0; i < userList.size(); i++) {
-//            if (userList.get(i).getCountry().equals(country)){
-//                request.setAttribute("user",userList.get(i));
-//                request.setAttribute("message","User information");
-//            }
-//        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/find.jsp");
         dispatcher.forward(request,response);
     }
