@@ -89,12 +89,11 @@ public class UserServlet extends HttpServlet {
     }
 
     private void  findByCountry(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String country = request.getParameter("country");
+        String country = new String(request.getParameter("search").getBytes("iso-8859-1"),"utf-8");
         List<User> user = this.userDAO.selectCountry(country);
-        request.setAttribute("user",user);
-        request.setAttribute("message","User information");
+        request.setAttribute("listUser",user);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/find.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -119,8 +118,8 @@ public class UserServlet extends HttpServlet {
 
     private void createUser(HttpServletRequest request,HttpServletResponse response) throws SQLException, ServletException, IOException {
         String name = new String(request.getParameter("name").getBytes("iso-8859-1"),"utf-8");
-        String email = request.getParameter("email");
-        String country = request.getParameter("country");
+        String email = new String(request.getParameter("email").getBytes("iso-8859-1"),"utf-8");
+        String country = new String(request.getParameter("country").getBytes("iso-8859-1"),"utf-8");
         User newUser = new User(name, email, country);
 
         userDAO.insertUser(newUser);
@@ -144,10 +143,10 @@ public class UserServlet extends HttpServlet {
     }
 
     private void editUser(HttpServletRequest request,HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String country = request.getParameter("country");
+        int id = Integer.parseInt(new String(request.getParameter("id").getBytes("iso-8859-1"),"utf-8"));
+        String name = new String(request.getParameter("name").getBytes("iso-8859-1"),"utf-8");
+        String email = new String(request.getParameter("email").getBytes("iso-8859-1"),"utf-8");
+        String country = new String(request.getParameter("country").getBytes("iso-8859-1"),"utf-8");
         User user = new User(id,name,email,country);
         userDAO.updateUser(user);
 

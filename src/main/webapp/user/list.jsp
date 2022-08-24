@@ -7,7 +7,7 @@
 </head>
 <style>
 
-    table,tr,td {
+    table,tr, th,td {
         padding: 10px;
         border: 2px solid gray;
         border-collapse:collapse
@@ -36,9 +36,14 @@
     <h2><a href="/users?action=create" class="csw-btn-button" rel="nofollow">Creat New User</a></h2>
 
     <br>
-    <h2>
-        <a href="/users?action=find" class="csw-btn-button" rel="nofollow" >Find User</a>
-    </h2>
+<%--    <h2>--%>
+<%--        <a href="/users?action=find" class="csw-btn-button" rel="nofollow" >Find User</a>--%>
+<%--    </h2>--%>
+
+    <form action="/users?action=find" method="post">
+        <input type="text" name="search" id="search" placeholder="country">
+        <input type="submit" value="Search">
+    </form>
     <br>
     <h2>
        <a href="/users?action=sort" class="csw-btn-button" rel="nofollow" >Display User List By Name</a>
